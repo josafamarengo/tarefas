@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
+//import { DndProvider, useDrag } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 import { Item } from '../types/item'
 
 import { ThemeProvider, DefaultTheme } from 'styled-components'
-import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import GlobalStyle from '../styles/global'
 import light from '../styles/themes/light'
 import dark from '../styles/themes/dark'
 
 import Header from '../components/Header'
-import Cover from '../components/Cover'
 import Task from '../components/Task'
 import AddNewTask from '../components/AddNewTask'
 import Filter from '../components/Filter'
@@ -25,8 +25,8 @@ const App = () => {
       setTheme(theme.title === 'light' ? dark : light);
     };
 
-    // Clona a lista e adiciona um novo item
-    const addTask = (task: string) => {
+
+    const addTask = (task: string) => { // Clona a lista e adiciona um novo item
         let newList = [...list];
         newList.push({id: list.length + 1, name: task, done: false});
         setList(newList);
@@ -42,6 +42,13 @@ const App = () => {
         setList(newList);
     }
 
+    const removeTask = (id: number) => {  // Remove um item da lista
+        let newList = [...list];
+        newList = newList.filter(item => item.id !== id);
+        setList(newList);
+    }
+
+    // Filtro de tarefas
     const updateFilter = (selected) => {
       setSelectedFilter(selected)
     }
@@ -56,20 +63,23 @@ const App = () => {
       }
       return newList;
     }
-    
+
   return(
     <ThemeProvider theme={theme}>
-      <Cover />
       <div className="App">
         <Header toggleTheme={toggleTheme} />
         <AddNewTask onEnter={addTask}/>
+
+        <section className="listArea">
           <div className="task-list">
           {list.map((item, index) => (
-            <Task key={index} item={item} onChange={taskChange}/>
+            <Task key={index} item={item} onChange={taskChange} onRemove={removeTask}/>
           ))}
           </div>
-        <Filter selectedFilter={selectedFilter} updateFilter={updateFilter} />
+          <Filter selectedFilter={selectedFilter} updateFilter={updateFilter} />
+        </section>
       </div>
+      <p className="frase">Drag and drop to reorder list</p>
       <footer>
           <p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
           Coded by <a href="https://josafa.com.br" target="_blank">Josafá Marengo</a>.</p>

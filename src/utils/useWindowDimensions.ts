@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 
 export default function useWindowDimensions() {
 
-  const hasWindow = typeof window !== 'undefined';
+  const hasWindow = typeof window !== 'undefined'; // Retorna se possui ou não o objeto window
 
   function getWindowDimensions() {
-    const width = hasWindow ? window.innerWidth : null;
+    const width = hasWindow ? window.innerWidth : null; //se possui o objeto window, pega o tamanho da largura
     return {
       width,
     };
@@ -13,10 +13,10 @@ export default function useWindowDimensions() {
 
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
-  function handleResize() {
+  function handleResize() { //função para atualizar o tamanho da tela
     setWindowDimensions(getWindowDimensions());
   }
-  useEffect(() => {
+  useEffect(() => { 
     if (hasWindow) {
       handleResize();
 

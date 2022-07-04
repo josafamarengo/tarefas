@@ -16,10 +16,17 @@ const AddNewTask = ({onEnter}: Props) => {
     }
   }
 
+  const addClick = () => {
+    if (inputText !== '') {
+      onEnter(inputText);
+      setInputText('');
+    }
+  }
+
   return (
     <Container>
-        <div className="add-new-task"><img src="https://img.icons8.com/android/24/000000/plus.png"/></div>
-      <input 
+        <button className="add-new-task" onClick={addClick}><img src="https://img.icons8.com/android/24/000000/plus.png"/></button>
+      <input
         type="text"
         placeholder="Adicionar tarefa"
         value={inputText}

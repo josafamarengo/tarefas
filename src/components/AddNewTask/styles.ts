@@ -2,15 +2,25 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     background-color: ${props => props.theme.colors.primary};
-    padding: 20px;
+    padding: 10px;
     margin: 20px 0;
-    display: flex;
     border-radius: 5px;
+    display: flex;
     align-items: center;
 
-    img {
-        width: 20px;
-        margin-right: 10px;
+    button {
+      background: transparent;
+      width: 20px;
+      margin-right: 10px;
+      border: 0;
+      cursor: pointer;
+      opacity: 0.5;
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1;
+      &:hover {
+        opacity: 0.7;
+      }
     }
 
     input {

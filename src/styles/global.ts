@@ -1,7 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-//import useWindowDimensions from '../utils/useWindowDimensions';
-
-//let imgBackground = require('../images/bg-desktop-'+ `${props => props.theme.title}`+'.jpg');
+import windowDimensions from '../utils/useWindowDimensions';
 
 export default createGlobalStyle`
   *{
@@ -14,11 +12,12 @@ export default createGlobalStyle`
     width: 100vw;
     height: 100vh;
     background: ${props => props.theme.colors.background};
+    background-image: img;
+    background-size: cover;
     color: ${props => props.theme.colors.text};
     font: 400 18px Josefin Sans, sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     position: relative;
   }
@@ -31,41 +30,54 @@ export default createGlobalStyle`
   }
 
   i {
-    color: ${props => props.theme.colors.text};
     cursor: pointer;
   }
 
   .App {
+    width: 100vw;
     max-width: 540px;
-    display: flex;
-    flex-direction: column;
     @media (max-width: 540px) {
-      max-width: 90%;
+      max-width: 90vw;
+    }
+    .listArea {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      background: ${props => props.theme.colors.primary};
+      box-shadow: ${props => props.theme.colors.shadow};
     }
 
     .task-list {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      max-width: 540px;
       margin-top: 25px;
-      border-radius: 5px;
-      min-height: 300px;
-    }
-
-    footer {
-      position: fixed;
-      padding: 10px;
-      text-align: center;
-      font-size: 12px;
       width: 100%;
-      bottom: 0;
-      display: flex;
-      justify-content: center;
-      box-shadow: 0px -5px 5px rgba(68, 68, 68, 0.1);
-    }
-    a {
-      color: hsl(220, 98%, 61%);
+      min-height: 250px;
     }
   }
+  .frase {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  footer {
+    background-color: ${props => props.theme.colors.background};
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 12px;
+    box-shadow: 0px -5px 5px rgba(68, 68, 68, 0.1);
+  }
+  a {
+    text-decoration: none;
+    color: ${props => props.theme.colors.text};
+  }
+  a:hover {
+    color: hsl(220, 98%, 61%);
+  }
 `;
+
+const hasWindow = typeof window !== 'undefined' ? window.innerWidth : null;
+const img = hasWindow ? `url(${require('../images/bg-desktop-dark.jpg')})` : null;
