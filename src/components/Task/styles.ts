@@ -44,6 +44,7 @@ input {
 }
 label {
   color: ${props => props.theme.colors.secondary};
+  margin-left: 10px;
   cursor: pointer;
   }
 button {
@@ -53,8 +54,6 @@ button {
   border: 0;
   cursor: pointer;
   opacity: 0.5;
-  font-size: 24px;
-  font-weight: bold;
   line-height: 1;
   &:hover {
     opacity: 0.7;

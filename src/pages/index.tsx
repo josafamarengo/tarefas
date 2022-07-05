@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 //import { DndProvider, useDrag } from 'react-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
+//import { HTML5Backend } from 'react-dnd-html5-backend'
 import { Item } from '../types/item'
 
 import { ThemeProvider, DefaultTheme } from 'styled-components'
@@ -15,13 +15,14 @@ import Filter from '../components/Filter'
 
 /* usePersistedState é um hook que recebe um nome do estado e um valor padrão e armazena o valor no localStorage */
 import usePersistedState from '../utils/usePersitedState'
+import { count } from 'console'
 
 const App = () => {
     const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light);
     const [list, setList] = useState<Item[]>([{id:1, name: 'Tarefa 1', done: false}, {id: 2, name: 'Tarefa 2', done: false}]);
     const [selectedFilter, setSelectedFilter] = useState('all');
 
-    const toggleTheme = () => {
+    const toggleTheme = () => { // Função para alternar o tema
       setTheme(theme.title === 'light' ? dark : light);
     };
 
@@ -32,7 +33,7 @@ const App = () => {
         setList(newList);
     }
 
-    const taskChange = (id: number, done:boolean) => {
+    const taskChange = (id: number, done:boolean) => { // Clona a lista e altera o status de um item
         let newList = [...list];
         for(let i = 0; i < newList.length; i++){
             if(newList[i].id === id){
@@ -48,10 +49,27 @@ const App = () => {
         setList(newList);
     }
 
-    // Filtro de tarefas
-    const updateFilter = (selected) => {
-      setSelectedFilter(selected)
+    const clearList = () => { // Limpa a lista
+        let newList = [...list];
+        newList = newList.filter(item => item.done === false);
+        setList(newList);
     }
+
+    /* useDrag é um hook que recebe um componente e retorna um componente com o comportamento do DnD */
+    // const DragTask = useDrag(() => ({
+    //   item: { type: 'task' },
+    //   collect: monitor => ({
+    //     isDragging: monitor.isDragging(),
+    //   }),
+    // }))
+
+    /* ================================================
+    ========== FILTER =================================
+    =========================================== */
+    function updateFilter(selected): void {
+    setSelectedFilter(selected)
+    console.log(selected)
+  }
 
     const getTasks = () => {
       let newList = [...list];
@@ -62,6 +80,16 @@ const App = () => {
         newList = newList.filter(item => item.done);
       }
       return newList;
+    }
+
+    const getTasksCount = () => { // Retorna o número de tarefas a fazer
+      let count = 0;
+      for(let i = 0; i < list.length; i++){
+        if(!list[i].done){
+          count++;
+        }
+      }
+      return count;
     }
 
   return(
@@ -76,7 +104,11 @@ const App = () => {
             <Task key={index} item={item} onChange={taskChange} onRemove={removeTask}/>
           ))}
           </div>
-          <Filter selectedFilter={selectedFilter} updateFilter={updateFilter} />
+          <div className="filter-list">
+            <p>{getTasksCount()} {getTasksCount()>1 ? 'Itens' : 'Item'} Esperando</p>
+            <Filter selectedFilter={selectedFilter} updateFilter={updateFilter} getTasks={getTasks} />
+            <button onClick={clearList}>Clear completed</button>
+          </div>
         </section>
       </div>
       <p className="frase">Drag and drop to reorder list</p>

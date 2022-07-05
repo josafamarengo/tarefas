@@ -5,17 +5,10 @@ export const Container = styled.div`
     background-color: ${props => props.theme.colors.primary};
     padding: 10px;
     height: 50px;
+    width: 40%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 5px;
-
-    .filter {
-        width: 33%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between; 
-    }
 
     button {
         background: none;
@@ -23,6 +16,10 @@ export const Container = styled.div`
         color: ${props => props.theme.colors.text};
         font-size: 14px;
         font-family: 'Josefin Sans', sans-serif;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.7;
+        }
     }
 
     p {

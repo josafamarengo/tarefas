@@ -9,14 +9,14 @@ const AddNewTask = ({onEnter}: Props) => {
 
   const [inputText, setInputText] = useState('');
 
-  const handleEnter = (e: React.KeyboardEvent) => {
+  const handleEnter = (e: React.KeyboardEvent) => { // Função para adicionar uma nova tarefa
     if (e.code === 'Enter' && inputText !== '') {
       onEnter(inputText);
       setInputText('');
     }
   }
 
-  const addClick = () => {
+  const addClick = () => { // Função para adicionar uma nova tarefa com o mouse
     if (inputText !== '') {
       onEnter(inputText);
       setInputText('');
@@ -25,7 +25,15 @@ const AddNewTask = ({onEnter}: Props) => {
 
   return (
     <Container>
-        <button className="add-new-task" onClick={addClick}><img src="https://img.icons8.com/android/24/000000/plus.png"/></button>
+        <button
+          className="add-new-task"
+          onClick={addClick}>
+            <img
+              src="https://img.icons8.com/ios/50/000000/add--v1.png"
+              alt="add task"
+              width="29"
+              height="29"/>
+        </button>
       <input
         type="text"
         placeholder="Adicionar tarefa"

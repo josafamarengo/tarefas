@@ -14,18 +14,17 @@ export const Container = styled.div`
       margin-right: 10px;
       border: 0;
       cursor: pointer;
-      opacity: 0.5;
-      font-size: 24px;
-      font-weight: bold;
       line-height: 1;
+      opacity: 0.7;
       &:hover {
-        opacity: 0.7;
+        opacity: 0.5;
       }
     }
 
     input {
         height: 100%;
         width: 100%;
+        margin-left: 10px;
         border: 0;
         background: none;
         font-size: 14px;
@@ -47,6 +46,7 @@ export const Container = styled.div`
 
         &:focus {
             outline: none;
+            color: ${props => props.theme.colors.secondary};
         }
     }
 

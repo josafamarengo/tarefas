@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import windowDimensions from '../utils/useWindowDimensions';
 
 export default createGlobalStyle`
   *{
@@ -12,7 +11,7 @@ export default createGlobalStyle`
     width: 100vw;
     height: 100vh;
     background: ${props => props.theme.colors.background};
-    background-image: img;
+    background-image: ${img => `url(${img})`};
     background-size: cover;
     color: ${props => props.theme.colors.text};
     font: 400 18px Josefin Sans, sans-serif;
@@ -42,7 +41,7 @@ export default createGlobalStyle`
     .listArea {
       width: 100%;
       height: 100%;
-      border-radius: 10px;
+      border-radius: 5px;
       background: ${props => props.theme.colors.primary};
       box-shadow: ${props => props.theme.colors.shadow};
     }
@@ -51,6 +50,26 @@ export default createGlobalStyle`
       margin-top: 25px;
       width: 100%;
       min-height: 250px;
+    }
+    .filter-list {
+      width: 100%;
+      height: 50px;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px;
+    }
+    .filter-list button {
+      background: none;
+      border: none;
+      color: ${props => props.theme.colors.text};
+      font-size: 14px;
+      font-family: 'Josefin Sans', sans-serif;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.7;
+      }
     }
   }
   .frase {
@@ -78,6 +97,3 @@ export default createGlobalStyle`
     color: hsl(220, 98%, 61%);
   }
 `;
-
-const hasWindow = typeof window !== 'undefined' ? window.innerWidth : null;
-const img = hasWindow ? `url(${require('../images/bg-desktop-dark.jpg')})` : null;

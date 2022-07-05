@@ -1,29 +1,26 @@
-import { listenerCount } from 'process'
 import React from 'react'
 import { Container } from './styles'
 
-const Filter = ({ selectedFilter, updateFilter }) => {
+const Filter = ({ selectedFilter, updateFilter, getTasks }) => {
   const handleClick = (selected) => {
 
     updateFilter(selected)
   }
   return(
     <Container>
-      <p>2 Items</p>
-      <div className="filter">
-        <button 
+        <button
           aria-label="All"
           value="all"
           className={`filter-option ${selectedFilter === 'all' ? 'selected' : ''}`}
-          onClick={() => handleClick('all')}
+          onClick={() => getTasks('all')}
         >
           All
         </button>
-        <button 
+        <button
           aria-label="Active"
           value="active"
           className={`filter-option ${selectedFilter === 'active' ? 'selected' : ''}`}
-          onClick={() => handleClick('active')}
+          onClick={() => getTasks('active')}
         >
           Active
         </button>
@@ -31,12 +28,10 @@ const Filter = ({ selectedFilter, updateFilter }) => {
           aria-label="Completed"
           value="completed"
           className={`filter-option ${selectedFilter === 'completed' ? 'selected' : ''}`}
-          onClick={() => handleClick('completed')}
+          onClick={() => getTasks('completed')}
         >
           Completed
         </button>
-      </div>
-      <p>Clear completed</p>
     </Container>
   )
 }

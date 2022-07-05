@@ -18,7 +18,7 @@ const Task: React.FC<Props> = ({item, onChange, onRemove}: Props) => {
               onChange={e => onChange(item.id, e.target.checked)}
             />
             <label htmlFor={`task-${item.id}`} >{item.name}</label>
-            <button onClick={() => onRemove(item.id)}>X</button>
+            <button onClick={() => onRemove(item.id)}><img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png" alt="delete" height="25" /></button>
     </Container>
   );
 }
