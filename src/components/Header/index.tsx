@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
 import {Container} from './styles';
 import {ThemeContext} from 'styled-components';
-import LightIcon from '../../images/icon-sun.svg';
-import DarkIcon from '../../images/icon-moon.svg';
 
 interface Props {
   toggleTheme(): void;
@@ -10,6 +8,9 @@ interface Props {
 
 const Header: React.FC<Props> = ({ toggleTheme }) => {
   const { colors, title } =useContext(ThemeContext);
+
+  const LightIcon = require('../../images/icon-sun.svg');
+  const DarkIcon = require('../../images/icon-moon.svg');
 
   return (
     <Container>
