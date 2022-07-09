@@ -15,7 +15,7 @@ This is a solution to the [Todo app challenge on Frontend Mentor](https://www.fr
   - [References](#references)
 - [About Me](#author)
 
-\_
+
 # Features
 
 - Optimal layout for the app depending device's screen size
@@ -30,7 +30,7 @@ This is a solution to the [Todo app challenge on Frontend Mentor](https://www.fr
 - All the basic functionalities are accessible on the keyboard
 - The task lists is saved on local storage
 
-\_
+
 # Demo
 
 ## Live Site
@@ -38,11 +38,11 @@ _To see the site click on button who says **Vercel**_
 
 <a href='https://josafa.com.br'><img src='https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white' alt='Live Site'></a>
 
-\_
+
 
 ## How to run locally
 
-\_
+
 1. Clone this repo using:
 ```bash
 git clone https://github.com/josafamarengo/josafamarengo.git
@@ -51,19 +51,19 @@ or if you have a SSH token:
 ```bash
 git clone git@github.com:josafamarengo/josafamarengo.git
 ```
-\_
+
 
 2. Run:
 ```bash
 yarn install
 ```
-\_
+
 
 3. Run 
 ```bash
 yarn dev
 ```
-\_
+
 
 # My process
 
@@ -74,7 +74,7 @@ yarn dev
 - [Styled Components](https://styled-components.com/) - For styles
 - [React DnD]() - Dragg and Drop library
 
-\_
+
 ## What I learned
 
 
@@ -93,21 +93,25 @@ const proudOfThisFunc = () => {
   console.log('🎉')
 }
 ```
-\_
+
 ## References
 
 - [React Dnd](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
 - [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
 
-\_
+
 # Author
 
 ### I'm a 29-year-old fullstack developer, coming from a military background and like many others, in career transition.
-\_
+
 
 To know more about my projects and skills, checkout the links below:
 - Blog - [josafa.com.br](https://blog.josafa.com.br)
 - Linkedin - [Josafá Marengo](https://Linkedin.com/in/josafamarengo)
 
-\_
-## [🔼](#frontend-mentor---todo-app-solution) Go to Top
+
+### [🔼](#frontend-mentor---todo-app-solution) Go to Top
+
+<div align="center">
+  <sub>Built with ❤︎ by <a href="https://github.com/josafamarengo">Josafá Marengo</a>
+</div>
